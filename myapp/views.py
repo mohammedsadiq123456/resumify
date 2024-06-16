@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UploadFileForm
 from .models import Resume
+from django.db.models import Q
 
 def extract_details_from_pdf(file_obj):
     try:
@@ -98,5 +99,21 @@ def upload_resume(request):
     return render(request, 'upload_resume.html', {'form': form})
 
 def resume_list(request):
+    skill_filter = request.GET.get('skill', '')
+    sort_by_experience = request.GET.get('sort', '')
+
     resumes = Resume.objects.all()
-    return render(request, 'resume_list.html', {'resumes': resumes})
+
+    if skill_filter:
+        resumes = resumes.filter(skills__icontains=skill_filter)
+
+    if sort_by_experience == 'asc':
+        resumes = resumes.order_by('years_of_experience')
+    elif sort_by_experience == 'desc':
+        resumes = resumes.order_by('-years_of_experience')
+
+    return render(request, 'resume_list.html', {
+        'resumes': resumes,
+        'skill_filter': skill_filter,
+        'sort_by_experience': sort_by_experience
+    })

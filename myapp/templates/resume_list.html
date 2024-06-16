@@ -5,6 +5,21 @@
 </head>
 <body>
     <h1>Resume List</h1>
+
+    <form method="get">
+        <label for="skill">Filter by Skill:</label>
+        <input type="text" id="skill" name="skill" value="{{ skill_filter }}">
+
+        <label for="sort">Sort by Years of Experience:</label>
+        <select id="sort" name="sort">
+            <option value="">Select</option>
+            <option value="asc" {% if sort_by_experience == 'asc' %}selected{% endif %}>Ascending</option>
+            <option value="desc" {% if sort_by_experience == 'desc' %}selected{% endif %}>Descending</option>
+        </select>
+
+        <button type="submit">Apply</button>
+    </form>
+
     <table border="1">
         <tr>
             <th>Name</th>
