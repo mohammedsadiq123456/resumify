@@ -1,0 +1,19 @@
+<!-- templates/resume_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume List</title>
+</head>
+<body>
+    <h1>Resume List</h1>
+    <ul>
+        {% for resume in resumes %}
+            <li>{{ resume.name }} - {{ resume.email }}</li>
+        {% empty %}
+            <li>No resumes uploaded yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
