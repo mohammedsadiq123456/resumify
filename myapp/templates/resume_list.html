@@ -1,19 +1,27 @@
-<!-- templates/resume_list.html -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Resume List</title>
 </head>
 <body>
     <h1>Resume List</h1>
-    <ul>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Years of Experience</th>
+            <th>Skills</th>
+        </tr>
         {% for resume in resumes %}
-            <li>{{ resume.name }} - {{ resume.email }}</li>
-        {% empty %}
-            <li>No resumes uploaded yet.</li>
+        <tr>
+            <td>{{ resume.name }}</td>
+            <td>{{ resume.phone_number }}</td>
+            <td>{{ resume.email }}</td>
+            <td>{{ resume.years_of_experience }}</td>
+            <td>{{ resume.skills }}</td>
+        </tr>
         {% endfor %}
-    </ul>
+    </table>
 </body>
 </html>

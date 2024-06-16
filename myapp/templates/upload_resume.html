@@ -1,9 +1,6 @@
-<!-- templates/upload_resume.html -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Upload Resume</title>
 </head>
 <body>
@@ -13,5 +10,8 @@
         {{ form.as_p }}
         <button type="submit">Upload</button>
     </form>
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
 </body>
 </html>
