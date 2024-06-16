@@ -5,6 +5,8 @@
 </head>
 <body>
     <h1>Upload Resume</h1>
+    <a href="{% url 'resume_list' %}">View table</a>
+
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
